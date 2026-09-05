@@ -11,4 +11,4 @@ The repository introduces the following new features -
 
 This repository will have nearly the same design in both the approaches, with the difference being at memory access. FPGA based implementation will have BRAM based memory instantiation (2-D array in Verilog), while the ASIC based implementation will have SRAM macro (from PDK library).
 
-The design is still in development stage, with completion targetted for late August/early September
+The design is still in development stage, with completion targetted for September 2026
