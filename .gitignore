@@ -1,1 +1,4 @@
 single_cycle/mux_2.sv
+yosys_flow.sh
+synth.ys
+riscv_sta.tcl
