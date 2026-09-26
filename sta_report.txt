@@ -1,0 +1,124 @@
+OpenSTA 3.1.0 0c9c542334 Copyright (c) 2026, Parallax Software, Inc.
+License GPLv3: GNU GPL version 3 <http://gnu.org/licenses/gpl.html>
+
+This is free software, and you are free to change and redistribute it
+under certain conditions; type `show_copying' for details. 
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show_warranty'.
+Warning 198: pipelined_ext/branch_gshare/netlist.v line 564, module sky130_sram_1kbyte_1rw1r_8x1024_8 not found. Creating black box for \PHT.0.0.sram .
+Warning: There are 12 input ports missing set_input_delay.
+Warning: There is 1 output port missing set_output_delay.
+Warning: There are 22 unconstrained endpoints.
+Startpoint: $auto$ff.cc:337:slice$266
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: $auto$ff.cc:337:slice$265
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock clk (rise edge)
+   0.0000    0.0000   clock network delay (ideal)
+   0.0000    0.0000 ^ $auto$ff.cc:337:slice$266/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.3750    0.3750 ^ $auto$ff.cc:337:slice$266/Q (sky130_fd_sc_hd__dfxtp_1)
+   0.5064    0.8814 v $abc$1389$auto$blifparse.cc:397:parse_blif$1429/X (sky130_fd_sc_hd__mux4_2)
+   0.1118    0.9932 ^ $abc$1389$auto$blifparse.cc:397:parse_blif$1430/X (sky130_fd_sc_hd__lpflow_isobufsrc_1)
+   0.0520    1.0452 v $abc$1389$auto$blifparse.cc:397:parse_blif$1433/Y (sky130_fd_sc_hd__nor3_1)
+   0.1685    1.2137 v $abc$1389$auto$blifparse.cc:397:parse_blif$1436/X (sky130_fd_sc_hd__o21a_1)
+   0.0000    1.2137 v $auto$ff.cc:337:slice$265/D (sky130_fd_sc_hd__edfxtp_1)
+             1.2137   data arrival time
+
+   5.0000    5.0000   clock clk (rise edge)
+   0.0000    5.0000   clock network delay (ideal)
+   0.0000    5.0000   clock reconvergence pessimism
+             5.0000 ^ $auto$ff.cc:337:slice$265/CLK (sky130_fd_sc_hd__edfxtp_1)
+  -0.2543    4.7457   library setup time
+             4.7457   data required time
+-------------------------------------------------------------
+             4.7457   data required time
+            -1.2137   data arrival time
+-------------------------------------------------------------
+             3.5320   slack (MET)
+
+
+Startpoint: $auto$ff.cc:337:slice$255
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: $auto$ff.cc:337:slice$227
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock clk (rise edge)
+   0.0000    0.0000   clock network delay (ideal)
+   0.0000    0.0000 ^ $auto$ff.cc:337:slice$255/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.2749    0.2749 ^ $auto$ff.cc:337:slice$255/Q (sky130_fd_sc_hd__dfxtp_1)
+   0.0000    0.2749 ^ $auto$ff.cc:337:slice$227/D (sky130_fd_sc_hd__dfxtp_1)
+             0.2749   data arrival time
+
+   0.0000    0.0000   clock clk (rise edge)
+   0.0000    0.0000   clock network delay (ideal)
+   0.0000    0.0000   clock reconvergence pessimism
+             0.0000 ^ $auto$ff.cc:337:slice$227/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.0346   -0.0346   library hold time
+            -0.0346   data required time
+-------------------------------------------------------------
+            -0.0346   data required time
+            -0.2749   data arrival time
+-------------------------------------------------------------
+             0.3096   slack (MET)
+
+
+Startpoint: $auto$ff.cc:337:slice$266
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: $auto$ff.cc:337:slice$265
+          (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout    Slew   Delay    Time   Description
+----------------------------------------------------------------------
+          0.00    0.00    0.00   clock clk (rise edge)
+                  0.00    0.00   clock network delay (ideal)
+          0.00    0.00    0.00 ^ $auto$ff.cc:337:slice$266/CLK (sky130_fd_sc_hd__dfxtp_1)
+     6    0.17    0.37    0.37 ^ $auto$ff.cc:337:slice$266/Q (sky130_fd_sc_hd__dfxtp_1)
+                                 table_index_reg[0] (net)
+     1    0.08    0.51    0.88 v $abc$1389$auto$blifparse.cc:397:parse_blif$1429/X (sky130_fd_sc_hd__mux4_2)
+                                 $abc$1389$new_n117 (net)
+     1    0.08    0.11    0.99 ^ $abc$1389$auto$blifparse.cc:397:parse_blif$1430/X (sky130_fd_sc_hd__lpflow_isobufsrc_1)
+                                 $abc$1389$new_n118 (net)
+     1    0.04    0.05    1.05 v $abc$1389$auto$blifparse.cc:397:parse_blif$1433/Y (sky130_fd_sc_hd__nor3_1)
+                                 $abc$1389$new_n121 (net)
+     1    0.03    0.17    1.21 v $abc$1389$auto$blifparse.cc:397:parse_blif$1436/X (sky130_fd_sc_hd__o21a_1)
+                                 $shiftx$pipelined_ext/branch_gshare/branch_gshare.sv:94$15.Y[0] (net)
+          0.03    0.00    1.21 v $auto$ff.cc:337:slice$265/D (sky130_fd_sc_hd__edfxtp_1)
+                          1.21   data arrival time
+
+          0.00    5.00    5.00   clock clk (rise edge)
+                  0.00    5.00   clock network delay (ideal)
+                  0.00    5.00   clock reconvergence pessimism
+                          5.00 ^ $auto$ff.cc:337:slice$265/CLK (sky130_fd_sc_hd__edfxtp_1)
+                 -0.25    4.75   library setup time
+                          4.75   data required time
+----------------------------------------------------------------------
+                          4.75   data required time
+                         -1.21   data arrival time
+----------------------------------------------------------------------
+                          3.53   slack (MET)
+
+
+wns max 0.00
+tns max 0.00
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             2.58e-04   4.33e-06   2.51e-10   2.62e-04  93.7%
+Combinational          1.24e-05   5.30e-06   1.18e-10   1.77e-05   6.3%
+Clock                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  2.70e-04   9.63e-06   3.70e-10   2.80e-04 100.0%
+                          96.6%       3.4%       0.0%
+% 

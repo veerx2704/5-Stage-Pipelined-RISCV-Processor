@@ -1,0 +1,15 @@
+ram block $__SKY130_SRAM_8X1024_1RW1R {
+    abits 10;
+    width 8;
+    cost 1;
+    init any;
+
+    port srsw "RW" {
+        clock posedge;
+        rdwr undefined;
+    }
+
+    port sr "R" {
+        clock posedge;
+    }
+}
