@@ -1,6 +1,8 @@
 # 5-stage Pipelined RISCV Processor
 This repository is an extension of the single cycle implementation at [RISCV-Single-Cycle-Processor](https://github.com/veerx2704/RISCV_Single_Cycle.git) and aims to optimize that design into a pipelined processor with 5 stages (Instruction Fetch / Decode / Execute / Memory Read/Write / Register Writeback).
 
+![RISCV-5-Stage-Pipeline-Microarchitecture](RISV_PIPELINED.png)
+
 The repository introduces the following new features - 
 1. 5-stage pipeline                                                         **(WIP)**
 2. Dynamic Branch Prediction                                                **(WIP)**
