@@ -1,4 +1,6 @@
 # 5-stage Pipelined RISCV Processor
+![SystemVerilog](https://img.shields.io/badge/Language-SystemVerilog-blue)
+
 This repository is an extension of the single cycle implementation at [RISCV-Single-Cycle-Processor](https://github.com/veerx2704/RISCV_Single_Cycle.git) and aims to optimize that design into a pipelined processor with 5 stages (Instruction Fetch / Decode / Execute / Memory Read/Write / Register Writeback).
 
 ## Design-Overview
