@@ -1,0 +1,702 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68 (git sha1 38e001a6f, Release, GNU /usr/bin/c++ 13.3.0)
+
+-- Executing script file `./synth.ys' --
+
+1. Executing Liberty frontend: /home/veer_mukadam/open-pdks/sky130/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib
+Imported 1 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: mem_ASIC/sram_memory_bank.sv
+Parsing SystemVerilog input from `mem_ASIC/sram_memory_bank.sv' to AST representation.
+Generating RTLIL representation for module `\sram_memory_bank'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: mem_ASIC/data_mem.sv
+Parsing SystemVerilog input from `mem_ASIC/data_mem.sv' to AST representation.
+Generating RTLIL representation for module `\data_mem'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+4.1. Analyzing design hierarchy..
+Top module:  \data_mem
+Used module:     \sram_memory_bank
+
+4.2. Analyzing design hierarchy..
+Top module:  \data_mem
+Used module:     \sram_memory_bank
+Removed 0 unused modules.
+
+5. Executing PROC pass (convert processes to netlists).
+
+5.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+5.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$mem_ASIC/data_mem.sv:37$25 in module data_mem.
+Marked 1 switch rules as full_case in process $proc$mem_ASIC/data_mem.sv:37$25 in module data_mem.
+Removed a total of 1 dead cases.
+
+5.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 6 assignments to connections.
+
+5.4. Executing PROC_INIT pass (extract init attributes).
+
+5.5. Executing PROC_ARST pass (detect async resets in processes).
+
+5.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~1 debug messages>
+
+5.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$31'.
+Creating decoders for process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$30'.
+Creating decoders for process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$29'.
+Creating decoders for process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$28'.
+Creating decoders for process `\data_mem.$proc$mem_ASIC/data_mem.sv:37$25'.
+     1/1: $1$mem2reg_rd$\r_data$mem_ASIC/data_mem.sv:37$22_DATA[31:0]$27
+Creating decoders for process `\data_mem.$proc$mem_ASIC/data_mem.sv:36$24'.
+
+5.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\data_mem.\r_data[3]' from process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$31'.
+No latch inferred for signal `\data_mem.\r_data[2]' from process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$30'.
+No latch inferred for signal `\data_mem.\r_data[1]' from process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$29'.
+No latch inferred for signal `\data_mem.\r_data[0]' from process `\data_mem.$proc$mem_ASIC/data_mem.sv:31$28'.
+No latch inferred for signal `\data_mem.$mem2reg_rd$\r_data$mem_ASIC/data_mem.sv:37$22_DATA' from process `\data_mem.$proc$mem_ASIC/data_mem.sv:37$25'.
+
+5.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\data_mem.\bank_sel_q' using process `\data_mem.$proc$mem_ASIC/data_mem.sv:36$24'.
+  created $dff cell `$procdff$37' with positive edge clock.
+
+5.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+5.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `data_mem.$proc$mem_ASIC/data_mem.sv:31$31'.
+Removing empty process `data_mem.$proc$mem_ASIC/data_mem.sv:31$30'.
+Removing empty process `data_mem.$proc$mem_ASIC/data_mem.sv:31$29'.
+Removing empty process `data_mem.$proc$mem_ASIC/data_mem.sv:31$28'.
+Found and cleaned up 1 empty switch in `\data_mem.$proc$mem_ASIC/data_mem.sv:37$25'.
+Removing empty process `data_mem.$proc$mem_ASIC/data_mem.sv:37$25'.
+Removing empty process `data_mem.$proc$mem_ASIC/data_mem.sv:36$24'.
+Cleaned up 1 empty switch.
+
+5.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+<suppressed ~1 debug messages>
+Optimizing module sram_memory_bank.
+
+6. Executing OPT pass (performing simple optimizations).
+
+6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \sram_memory_bank..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_mem.
+  Optimizing cells in module \sram_memory_bank.
+Performed a total of 0 changes.
+
+6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+Removed 0 unused cells and 29 unused wires.
+<suppressed ~2 debug messages>
+
+6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \sram_memory_bank..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_mem.
+  Optimizing cells in module \sram_memory_bank.
+Performed a total of 0 changes.
+
+6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7. Executing FSM pass (extract and optimize FSM).
+
+7.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+8. Executing OPT pass (performing simple optimizations).
+
+8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \sram_memory_bank..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_mem.
+  Optimizing cells in module \sram_memory_bank.
+Performed a total of 0 changes.
+
+8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+8.9. Finished fast OPT passes. (There is nothing left to do.)
+
+9. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+10. Executing MEMORY pass.
+
+10.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+10.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+10.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+10.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+10.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+10.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+10.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+10.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+10.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+10.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+11. Executing OPT pass (performing simple optimizations).
+
+11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_mem..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \sram_memory_bank..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_mem.
+  Optimizing cells in module \sram_memory_bank.
+Performed a total of 0 changes.
+
+11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 11 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+11.9. Finished fast OPT passes. (There is nothing left to do.)
+
+12. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+
+13. Executing TECHMAP pass (map to technology primitives).
+
+13.1. Executing Verilog-2005 frontend: memory_map.v
+Parsing Verilog input from `memory_map.v' to AST representation.
+Generating RTLIL representation for module `$__SKY130_SRAM_8X1024_1RW1R'.
+Successfully finished Verilog frontend.
+
+13.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+14. Executing TECHMAP pass (map to technology primitives).
+
+14.1. Executing Verilog-2005 frontend: /home/veer_mukadam/install/yosys-src/build/share/techmap.v
+Parsing Verilog input from `/home/veer_mukadam/install/yosys-src/build/share/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+14.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $not.
+Using template $paramod$constmap:02d92f7c41c6e05350e231b014ff179d9e1ab4ef$paramod$7b0bb309dce042ecaf2e0bfa495da988fc49fdf1\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $dff.
+No more expansions possible.
+<suppressed ~220 debug messages>
+
+15. Executing OPT pass (performing simple optimizations).
+
+15.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+<suppressed ~6 debug messages>
+Optimizing module sram_memory_bank.
+
+15.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 282 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Computing hashes of 280 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 2 cells.
+
+15.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_mem..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sram_memory_bank..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_mem.
+  Optimizing cells in module \sram_memory_bank.
+Performed a total of 0 changes.
+
+15.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 280 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+15.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+Removed 0 unused cells and 13 unused wires.
+<suppressed ~1 debug messages>
+
+15.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+15.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \data_mem..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \sram_memory_bank..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \data_mem.
+  Optimizing cells in module \sram_memory_bank.
+Performed a total of 0 changes.
+
+15.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\data_mem'.
+Computing hashes of 280 cells of `\data_mem'.
+Finding duplicate cells in `\data_mem'.
+Finding identical cells in module `\sram_memory_bank'.
+Computing hashes of 6 cells of `\sram_memory_bank'.
+Finding duplicate cells in `\sram_memory_bank'.
+Removed a total of 0 cells.
+
+15.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \data_mem..
+Finding unused cells or wires in module \sram_memory_bank..
+
+15.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module data_mem.
+Optimizing module sram_memory_bank.
+
+15.16. Finished fast OPT passes. (There is nothing left to do.)
+
+16. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__edfxtp_1 (noninv, pins=4, area=30.03) is a direct match for cell type $_DFFE_PP_.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    unmapped dff cell: $_DFFE_NN_
+    unmapped dff cell: $_DFFE_NP_
+    unmapped dff cell: $_DFFE_PN_
+    \sky130_fd_sc_hd__edfxtp_1 _DFFE_PP_ (.CLK( C), .D( D), .DE( E), .Q( Q));
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+16.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+<suppressed ~24 debug messages>
+Mapping DFF cells in module `\data_mem':
+  mapped 2 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+Mapping DFF cells in module `\sram_memory_bank':
+
+17. Executing ABC pass (technology mapping using ABC).
+
+17.1. Extracting gate netlist of module `\data_mem' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /tmp/yosys-liberty-scl-cache/yosys_merged_085cc116.scl (1 files)
+Replacing 32 occurrences of constant undef bits with constant zero bits
+
+17.1.1. Executed ABC.
+Extracted 274 gates and 408 wires to a netlist network with 132 inputs and 36 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Aug 13 2026 21:33:50)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /tmp/yosys-liberty-scl-cache/yosys_merged_085cc116.scl 
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 5000 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 5000 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+17.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__mux4_2 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:        1
+ABC RESULTS:        internal signals:      240
+ABC RESULTS:           input signals:      132
+ABC RESULTS:          output signals:       36
+Removing temp directory.
+
+17.2. Extracting gate netlist of module `\sram_memory_bank' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /tmp/yosys-liberty-scl-cache/yosys_merged_085cc116.scl (1 files)
+
+17.2.1. Executed ABC.
+Extracted 5 gates and 8 wires to a netlist network with 3 inputs and 3 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Aug 13 2026 21:33:50)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /tmp/yosys-liberty-scl-cache/yosys_merged_085cc116.scl 
+ABC: Warning: Detected 9 multi-output cells (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + retime -o -D 5000 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf -D 5000 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+17.2.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:        2
+ABC RESULTS:        internal signals:        2
+ABC RESULTS:           input signals:        3
+ABC RESULTS:          output signals:        3
+Removing temp directory.
+Removing global temp directory.
+Removed 0 unused cells and 381 unused wires.
+
+18. Executing Verilog backend.
+
+18.1. Executing BMUXMAP pass.
+
+18.2. Executing DEMUXMAP pass.
+Dumping module `\data_mem'.
+Dumping module `\sram_memory_bank'.
+
+19. Printing statistics.
+
+=== data_mem ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+       12        - wires
+      231        - wire bits
+       12        - public wires
+      231        - public wire bits
+        6        - ports
+       97        - port bits
+       38  783.251 cells
+        1    6.256   sky130_fd_sc_hd__and2_0
+        2   40.038   sky130_fd_sc_hd__dfxtp_1
+        2   12.512   sky130_fd_sc_hd__lpflow_isobufsrc_1
+       32  720.691   sky130_fd_sc_hd__mux4_2
+        1    3.754   sky130_fd_sc_hd__nor2_1
+        4        - submodules
+        4        -   sram_memory_bank
+
+   Area for cell type \sky130_sram_1kbyte_1rw1r_32x256_8 is unknown!
+
+   Chip area for module '\data_mem': 783.251200
+     of which used for sequential elements: 40.038400 (5.11%)
+
+=== sram_memory_bank ===
+
+        +----------Local Count, excluding submodules.
+        |        +-Local Area, excluding submodules.
+        |        | 
+       13        - wires
+      123        - wire bits
+       10        - public wires
+      120        - public wire bits
+        9        - ports
+      116        - port bits
+        4   11.261 cells
+        1    3.754   sky130_fd_sc_hd__clkinv_1
+        2    7.507   sky130_fd_sc_hd__nand2_1
+        1        -   sky130_sram_1kbyte_1rw1r_32x256_8
+
+   Area for cell type \sky130_sram_1kbyte_1rw1r_32x256_8 is unknown!
+
+   Chip area for module '\sram_memory_bank': 11.260800
+     of which used for sequential elements: 0.000000 (0.00%)
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+       54  828.294 data_mem
+        4   11.261 sram_memory_bank
+
+        +----------Count including submodules.
+        |        +-Area including submodules.
+        |        | 
+       64        - wires
+      723        - wire bits
+       52        - public wires
+      711        - public wire bits
+       42        - ports
+      561        - port bits
+        -        - memories
+        -        - memory bits
+        -        - processes
+       54  828.294 cells
+        1    6.256   sky130_fd_sc_hd__and2_0
+        4   15.014   sky130_fd_sc_hd__clkinv_1
+        2   40.038   sky130_fd_sc_hd__dfxtp_1
+        2   12.512   sky130_fd_sc_hd__lpflow_isobufsrc_1
+       32  720.691   sky130_fd_sc_hd__mux4_2
+        8   30.029   sky130_fd_sc_hd__nand2_1
+        1    3.754   sky130_fd_sc_hd__nor2_1
+        4        -   sky130_sram_1kbyte_1rw1r_32x256_8
+        4   45.043 submodules
+        4   45.043   sram_memory_bank
+
+   Area for cell type \sky130_sram_1kbyte_1rw1r_32x256_8 is unknown!
+
+   Chip area for top module '\data_mem': 828.294400
+     of which used for sequential elements: 40.038400 (4.83%)
+
+End of script. Logfile hash: 778e7973ea, time: 0.72s, user: 0.23s, system: 0.08s, MEM: 49.38 MB peak
+Yosys 0.68 (git sha1 38e001a6f, Release, GNU /usr/bin/c++ 13.3.0)
+Time spent: 53% 1x abc (0 sec), 20% 1x stat (0 sec), ...

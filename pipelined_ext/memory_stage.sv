@@ -73,6 +73,5 @@ end
 
 assign rd_MEMWB = rd_reg;
 assign ResultSrc_MEMWB = ResultSrc_reg;
-assign rd_MEMWB = rd_reg;
 assign reg_write_MEMWB = reg_write_reg;
 endmodule

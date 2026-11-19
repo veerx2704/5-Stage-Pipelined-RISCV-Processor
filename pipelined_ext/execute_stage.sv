@@ -12,10 +12,8 @@ module execute_stage(
     input wire [4:0] rd_IDEX,
     
     //Forward unit data signals
-    input wire [31:0] forward_dataA_WB,
-    input wire [31:0] forward_dataB_WB,
-    input wire [31:0] forward_dataA_MEM,
-    input wire [31:0] forward_dataB_MEM,
+    input wire [31:0] forward_data_WB,
+    input wire [31:0] forward_data_MEM,
     
     //Control signal inputs
     
@@ -75,14 +73,16 @@ wire LT;
 wire LTU;
 
 assign ALU_inA = forwardA[1] ? 
-                    forwardA[0] ?  32'bx : forward_dataA_WB
-                 :  forwardA[0] ?  forward_dataA_MEM : rs1_IDEX;
+                    forwardA[0] ?  32'bx : forward_data_WB
+                 :  forwardA[0] ?  forward_data_MEM : rs1_IDEX;
                  
 assign ALU_data_sourceB = forwardB[1] ?
-                             forwardB[0] ? 32'bx : forward_dataB_WB
-                          :  forwardB[0] ? forward_dataB_MEM : rs2_IDEX;
+                             forwardB[0] ? 32'bx : forward_data_WB
+                          :  forwardB[0] ? forward_data_MEM : rs2_IDEX;
 
-assign ALU_inB = ALUSrc_IDEX ? imm_value_IDEX : ALU_data_sourceB;
+assign ALU_inB = ALUSrc_IDEX ? imm_value_IDEX :
+                 forwardB[1] ? (forwardB[0] ? 32'bx : forward_data_WB) :
+                               (forwardB[0] ? forward_data_MEM : rs2_IDEX);
 
 ALU ALU_ACTUAL (    .DataA(ALU_inA),
                     .DataB(ALU_inB),
@@ -91,9 +91,6 @@ ALU ALU_ACTUAL (    .DataA(ALU_inA),
                     .zero(zero),
                     .LT(LT),
                     .LTU(LTU)); 
-
-wire [4:0] rs1_forward = rs1_IDEX;
-wire [4:0] rs2_forward = rs2_IDEX;
 
 reg [31:0] ALUOut_reg;
 reg [31:0] sourceB_reg;
@@ -137,8 +134,8 @@ end
     assign rd_EXMEM = rd_EXMEM_reg;
     
     //Forward unit signal
-    assign rs1_forward_compare = rs1_forward;
-    assign rs2_forward_compare = rs2_forward;
+    assign rs1_forward_compare = rs1_addr_IDEX;
+    assign rs2_forward_compare = rs2_addr_IDEX;
     
     //Hazard unit signal
     assign rd_hazard = rd_IDEX;
@@ -156,6 +153,5 @@ end
     assign mem_read_hazard = mem_read_IDEX;
     assign store_control_hazard = store_control_IDEX;
     assign load_control_hazard = load_control_IDEX;
-    assign ResultSrc_EXMEM = ResultSrc_reg;
 
 endmodule

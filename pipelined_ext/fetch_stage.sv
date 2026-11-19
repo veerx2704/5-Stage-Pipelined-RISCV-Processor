@@ -12,10 +12,9 @@ module fetch_stage (
 
 reg [31:0] PC_IFID_reg;
 wire [31:0] PC_next;
-PC_next NEXT_PC_ADDR(.current_PC(PC_intermediate), .next_PC(PC_next));        // next sequential address
+PC_next NEXT_PC_ADDR(.current_PC(PC_IFID_reg), .next_PC(PC_next));        // next sequential address
 
 wire [31:0] PC_current;
-wire [31:0] PC_intermediate;
 wire [31:0] inst_intermediate;
 
 
@@ -48,7 +47,7 @@ always_ff @(posedge clk) begin
     end
     else begin
         if(PCWrite) begin
-            PC_ID_reg <= PC_intermediate;
+            PC_ID_reg <= PC_IFID_reg;
         end
         else begin
             PC_ID_reg <= '0;
@@ -59,7 +58,6 @@ always_ff @(posedge clk) begin
             inst_reg <= '0;
     end
 end
-assign PC_intermediate = PC_IFID_reg;
 assign PC_IFID = PC_IFID_reg;
 
 

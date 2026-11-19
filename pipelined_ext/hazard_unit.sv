@@ -41,29 +41,11 @@ module hazard_unit(
     //Stall if the result of mem read is needed by one of the operands of the next instruction
     
     wire [6:0] opcode = instruction[6:0];
-    reg flush_reg;
-    always_comb begin
-        flush_reg = 1'b0;
-        case(opcode)
-            I_Type: begin                                            //Previous instruction was load, current instruction is load or I-Type
-                flush_reg = (rs1 == rd_IDEX && mem_read_IDEX );     //If the current source address is loaded from prev instr, stall
-                                                                     //PCWrite = 1 -> operand independent from prev instruction, continuue normal operation
-                                                                     //PCWrite = 0 -> operand dependent on prev load instruction, stall pipeline
-            end
-            S_Type: begin
-                flush_reg = ((rs1 == rd_IDEX || rs2 == rd_IDEX) && mem_read_IDEX);   // Update PC if neither of the operands in the instruction is loaded from previous instruction
-                                                                                        // or mem_read does not take place in prev instruction
-            end
-            R_Type: begin
-                flush_reg = ((rs1 == rd_IDEX || rs2 == rd_IDEX) && mem_read_IDEX);   // Update PC if neither of the operands in the instruction is loaded from previous instruction
-                                                                                        // or mem_read does not take place in prev instruction
-            end
-            B_Type: begin
-                flush_reg = ((rs1 == rd_IDEX || rs2 == rd_IDEX) && mem_read_IDEX);   // Update PC if neither of the operands in the instruction is loaded from previous instruction
-                                                                                        // or mem_read does not take place in prev instruction
-            end
-        endcase
-    end
+    wire rs1_match = (rs1 == rd_IDEX);
+    wire rs2_match = (rs2 == rd_IDEX);
+    wire uses_rs1  = (opcode == I_Type) || (opcode == S_Type) || (opcode == R_Type) || (opcode == B_Type);
+    wire uses_rs2  = (opcode == S_Type) || (opcode == R_Type) || (opcode == B_Type);
+    wire flush_reg = mem_read_IDEX && ((uses_rs1 && rs1_match) || (uses_rs2 && rs2_match));
     assign PCWrite = ~flush_reg;        //Keep PCWrite at 1 for normal operations
     assign IF_ID_write = ~flush_reg;    //Keep write option as 1 for normal, 0 for no write (flush)
     assign pipeline_flush = flush_reg;  //Flush the pipeline when load follows dependent operand

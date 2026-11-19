@@ -10,10 +10,9 @@ module data_mem #(WIDTH = 32)(
 //32 x 1024 MEMORY
 wire [3:0] cs_en;
 
-wire [31:0] rw_data[0:3];
 wire [31:0] r_data[0:3];
 
-reg [31:0] RData_reg;
+reg [1:0] bank_sel_q;
 	assign cs_en = 4'd1 << addr[11:10];	// Instead of using a decoder, it is much simpler to shift the enable bus by address value
 						// If address[11:9] = 3, cs_en = 4'b1000 (1 << 3)
 
@@ -29,11 +28,11 @@ genvar i;
 					.WData(WData), 
 					.Waddr(addr[9:2]), 
 					.Raddr(addr[9:2]), 
-					.RData_0(rw_data[i]),
+					.RData_0(),
 					.RData_1(r_data[i]));
 	end:MEMORY_BANK
 
 endgenerate
-	always @(posedge clk) RData_reg <= r_data[addr[11:10]];
-	assign RData = RData_reg;	//take data from read port when read is needed, otherwise keep the data from read/write port
+	always @(posedge clk) bank_sel_q <= addr[11:10];
+	assign RData = r_data[bank_sel_q];
 endmodule

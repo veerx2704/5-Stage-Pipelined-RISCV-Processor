@@ -11,8 +11,8 @@ module branch_gshare(clk, rst, PC, branch, pred);
   wire branch;
   output pred;
   wire pred;
-  wire [9:0] \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 ;
-  wire [7:0] \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 ;
+  wire [9:0] \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 ;
+  wire [7:0] \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 ;
   wire \$abc$1389$auto$mem.cc:1168:emulate_transparency$103[0] ;
   wire \$abc$1389$auto$mem.cc:1168:emulate_transparency$103[1] ;
   wire \$abc$1389$auto$mem.cc:1185:emulate_transparency$107[0] ;
@@ -83,7 +83,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
   wire \$abc$1389$techmap\PHT.0.0.$not$memory_map.v:20$116_Y ;
   wire [7:0] \$auto$mem.cc:1642:emulate_read_first$93 ;
   wire [7:0] \$auto$memory_libmap.cc:1986:emit_port$113 ;
-  wire [0:0] \$shiftx$pipelined_ext/branch_gshare/branch_gshare.sv:94$15.Y ;
+  wire [0:0] \$shiftx$mem_ASIC/branch_gshare.sv:94$15.Y ;
   wire [9:0] GHR;
   wire [9:0] GHR_comb;
   wire [7:0] next_path;
@@ -137,37 +137,37 @@ module branch_gshare(clk, rst, PC, branch, pred);
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1401  (
     .A(PC[6]),
     .B(rst),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [6])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [6])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1402  (
     .A(rst),
     .B(PC[2]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [2])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [2])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1403  (
     .A(rst),
     .B(PC[5]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [5])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [5])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1404  (
     .A(rst),
     .B(PC[4]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [4])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [4])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1405  (
     .A(rst),
     .B(PC[3]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [3])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [3])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1406  (
     .A(rst),
     .B(PC[1]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [1])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [1])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1407  (
     .A(rst),
     .B(PC[0]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [0])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [0])
   );
   sky130_fd_sc_hd__nand2_1 \$abc$1389$auto$blifparse.cc:397:parse_blif$1408  (
     .A(rst),
@@ -178,7 +178,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
     .A(rst),
     .B(branch),
     .C(next_path[0]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [1])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [1])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1410  (
     .A(rst),
@@ -193,7 +193,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
   sky130_fd_sc_hd__nor2_1 \$abc$1389$auto$blifparse.cc:397:parse_blif$1412  (
     .A(next_path[0]),
     .B(\$abc$1389$new_n96 ),
-    .Y(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [0])
+    .Y(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [0])
   );
   sky130_fd_sc_hd__o21ai_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1413  (
     .A1(table_index_reg[0]),
@@ -295,7 +295,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
     .A1(GHR[9]),
     .A2(PC[9]),
     .B1(\$abc$1389$new_n114 ),
-    .Y(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [9])
+    .Y(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [9])
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1428  (
     .A(rst),
@@ -353,7 +353,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
     .A1(\$abc$1389$new_n121 ),
     .A2(\$abc$1389$new_n123 ),
     .B1(\$abc$1389$auto$mem.cc:1541:emulate_reset$99 ),
-    .X(\$shiftx$pipelined_ext/branch_gshare/branch_gshare.sv:94$15.Y )
+    .X(\$shiftx$mem_ASIC/branch_gshare.sv:94$15.Y )
   );
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1438  (
     .A(PC[6]),
@@ -393,7 +393,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1445  (
     .A(rst),
     .B(PC[7]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [7])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [7])
   );
   sky130_fd_sc_hd__buf_1 \$abc$1389$auto$blifparse.cc:397:parse_blif$1446  (
     .A(rst),
@@ -402,7 +402,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
   sky130_fd_sc_hd__and2_0 \$abc$1389$auto$blifparse.cc:397:parse_blif$1447  (
     .A(rst),
     .B(PC[8]),
-    .X(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [8])
+    .X(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [8])
   );
   sky130_fd_sc_hd__a21oi_1 \$abc$1389$auto$blifparse.cc:397:parse_blif$1448  (
     .A1(GHR[9]),
@@ -437,62 +437,62 @@ module branch_gshare(clk, rst, PC, branch, pred);
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$245  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [0]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [0]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[0] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$246  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [1]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [1]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[1] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$247  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [2]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [2]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[2] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$248  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [3]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [3]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[3] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$249  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [4]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [4]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[4] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$250  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [5]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [5]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[5] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$251  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [6]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [6]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[6] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$252  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [7]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [7]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[7] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$253  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [8]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [8]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[8] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$254  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_ADDR[9:0]$5 [9]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_ADDR[9:0]$5 [9]),
     .Q(\$abc$1389$auto$mem.cc:1643:emulate_read_first$94[9] )
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$255  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [0]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [0]),
     .Q(\$auto$mem.cc:1642:emulate_read_first$93 [0])
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$256  (
     .CLK(clk),
-    .D(\$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [1]),
+    .D(\$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [1]),
     .Q(\$auto$mem.cc:1642:emulate_read_first$93 [1])
   );
   sky130_fd_sc_hd__dfxtp_1 \$auto$ff.cc:337:slice$264  (
@@ -502,7 +502,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
   );
   sky130_fd_sc_hd__edfxtp_1 \$auto$ff.cc:337:slice$265  (
     .CLK(clk),
-    .D(\$shiftx$pipelined_ext/branch_gshare/branch_gshare.sv:94$15.Y ),
+    .D(\$shiftx$mem_ASIC/branch_gshare.sv:94$15.Y ),
     .DE(rst),
     .Q(next_path[0])
   );
@@ -575,7 +575,7 @@ module branch_gshare(clk, rst, PC, branch, pred);
     .wmask0(1'h1)
   );
   assign \$auto$mem.cc:1642:emulate_read_first$93 [7:2] = 6'h00;
-  assign \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [7:3] = { \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$pipelined_ext/branch_gshare/branch_gshare.sv:89$1_DATA[7:0]$6 [2] };
+  assign \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [7:3] = { \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [2], \$0$memwr$\PHT$mem_ASIC/branch_gshare.sv:89$1_DATA[7:0]$6 [2] };
   assign table_index[8:0] = PC[8:0];
   assign next_path[7:1] = 7'h00;
   assign GHR_comb = { pred_reg, 9'h000 };

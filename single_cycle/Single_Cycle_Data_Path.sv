@@ -47,7 +47,6 @@ module Single_Cycle_Data_Path #(parameter WIDTH = 32)(
     wire [31:0] loaded_mem_data;
     wire [31:0] next_addr;
     wire [31:0] target_addr;
-    wire [31:0] target_addr;
     wire [31:0] imm_value;
     wire [31:0] read_regA;
     wire [31:0] read_regB;
@@ -56,9 +55,7 @@ module Single_Cycle_Data_Path #(parameter WIDTH = 32)(
     wire [31:0] PC_next_addr;
     
     
-    wire PC_source;
-    assign PC_source = PCSrc | jump;
-        assign PC_next_addr = PC_source ? target_addr : next_addr;
+    assign PC_next_addr = PCSrc ? target_addr : next_addr;
 
     PC_handler #(.WIDTH(WIDTH)) updatedPC( .PC_addr(PC_next_addr), 
                                            .clk(clk), 
@@ -95,10 +92,8 @@ module Single_Cycle_Data_Path #(parameter WIDTH = 32)(
     
 
     wire [31:0] ALUDataB;
-    wire [31:0] ALUDataA;
     assign ALUDataB = ALUSrc ? imm_value : read_regB;
-    assign ALUDataA = read_regA;
-    ALU #(.WIDTH(WIDTH)) ALU_ACTUAL( .DataA(ALUDataA),
+    ALU #(.WIDTH(WIDTH)) ALU_ACTUAL( .DataA(read_regA),
                                      .DataB(ALUDataB),
                                      .ALUCode(ALUCode),
                                      .ALU_out(ALU_out),

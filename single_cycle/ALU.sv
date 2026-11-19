@@ -9,20 +9,35 @@ module ALU #(parameter WIDTH = 32) (
 );
 wire overflow;
 reg [WIDTH-1:0] computed_out;
-wire [WIDTH-1:0] InvB = (ALUCode == 4'b0000) ? DataB : ~DataB;         // We only need addition during 4'b0000.
-                                                                       //In all other cases, we need subtraction to calculate LT and LTU
-wire Cin = (ALUCode == 4'b0000) ? 1'b0 : 1'b1;
+wire sub_en = |ALUCode;
+wire [WIDTH-1:0] InvB = sub_en ? ~DataB : DataB;                       // We only need addition during 4'b0000.
+                                                                       // In all other cases, we need subtraction to calculate LT and LTU
+wire Cin = sub_en;
 wire [WIDTH-1:0] sum;
 wire cout;
 
 wire SLT;
 wire SLTU;
 
+// Shared 5-bit barrel shifter (bit-reversed input/output for SLL)
+wire [4:0] shamt = DataB[4:0];
+wire is_sll = (ALUCode == 4'b0101);
+wire is_sra = (ALUCode == 4'b1100);
+wire [WIDTH-1:0] shift_in;
+wire [WIDTH-1:0] shift_res_raw;
+wire [WIDTH-1:0] shift_res;
+genvar b;
+generate
+    for (b = 0; b < WIDTH; b = b + 1) begin : BIT_REV
+        assign shift_in[b]  = is_sll ? DataA[WIDTH-1-b] : DataA[b];
+        assign shift_res[b] = is_sll ? shift_res_raw[WIDTH-1-b] : shift_res_raw[b];
+    end
+endgenerate
+assign shift_res_raw = $signed({is_sra & DataA[WIDTH-1], shift_in}) >>> shamt;
+
 adder #(.WIDTH(WIDTH)) ADD_SUB_BLOCK (.SrcA(DataA), .SrcB(InvB), .Cin(Cin), .Sum(sum), .Cout(cout));     //if ALUCode == 4'b0000 -> do add otherwise only subtract
                                                                                                          //DataA < DataB if cout = 0 (unsigned)
-                                                                                                         // DataA >= DataB if cout = 1 (unsigned)
-
-
+                                                                                                         //DataA >= DataB if cout = 1 (unsigned)
 
 always_comb begin
     case(ALUCode)
@@ -33,22 +48,18 @@ always_comb begin
         4'b0010: computed_out = DataA ^ DataB;                        //xor
         4'b0100: computed_out = {{(WIDTH-1){1'b0}},SLT};              //slt
         4'b0110: computed_out = {{(WIDTH-1){1'b0}},SLTU};             //sltu
-        4'b0101: computed_out = DataA << DataB;                       //sll
-        4'b1101: computed_out = DataA >> DataB;                       //srl
-        4'b1100: computed_out = DataA >>> DataB;                      //sra
-        4'b1000: computed_out = {{DataB[WIDTH-1:WIDTH-20]},12'b0};    //lui
-        //4'b1110: computed_out = sum;                                        
+        4'b0101, 4'b1101, 4'b1100: computed_out = shift_res;          //sll, srl, sra
+        4'b1000: computed_out = DataB;                                //lui (already shifted in imm_extend)
         default: computed_out = 'x;
     endcase
 end
-assign overflow = (ALUCode == 4'b0000) ? (~(DataA[31] ^ DataB[31]) & (DataA[31] ^ sum[31])) : //IN ADDITION, V = 1 WHEN A AND B HAVE SAME SIGN BUT RESULT HAS DIFFERENT SIGN
-                                         ((DataA[31] ^ DataB[31]) & (DataA[31] ^ sum[31]));   //IN SUBTRACTION, V = 1 WHEN RESULT AND B HAVE SAME SIGN BUT A HAS DIFFERENT SIGN  
+assign overflow = (DataA[WIDTH-1] ^ DataB[WIDTH-1]) & (DataA[WIDTH-1] ^ sum[WIDTH-1]); // Subtraction overflow for SLT
 
-assign SLT = sum[31] ^ overflow;
+assign SLT = sum[WIDTH-1] ^ overflow;
 assign SLTU = ~cout;
 assign ALU_out = computed_out;
-assign zero = computed_out == 0;                              //if sum is zero, the condition holds for beq, otherwise for BNE
-assign LT = SLT;                                              //for BLT
-assign LTU = SLTU;                                            //for BLTU
+assign zero = (DataA == DataB);                               // Parallel equality check for BEQ/BNE
+assign LT = SLT;                                              // for BLT
+assign LTU = SLTU;                                            // for BLTU
 
 endmodule

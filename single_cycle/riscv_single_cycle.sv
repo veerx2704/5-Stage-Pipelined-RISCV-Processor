@@ -112,14 +112,6 @@ module riscv_single_cycle #(parameter WIDTH = 32)(
 	assign dbg_MEMD = WData;
 	assign dbg_MEMA = Waddr;
     initial begin
-        $monitor($time," x5:%h\tx6:%h",SINGLE_CYCLE.REG_FILE.REGISTER_FILE[5], SINGLE_CYCLE.REG_FILE.REGISTER_FILE[6]);
-        $monitor($time," Current_addr:%h\tinstruction:%h\t\tcu_instruction:%h\n",SINGLE_CYCLE.PC_addr, SINGLE_CYCLE.instruction, instruction[31:7]);
-        $monitor($time," target_addr:%h\tPC_SOURCE:%b\t\tNew_Immediate:%h",SINGLE_CYCLE.target_addr, SINGLE_CYCLE.PC_source, SINGLE_CYCLE.imm_value);
-        $monitor($time," Register A:%h\t\tRegister B:%h",SINGLE_CYCLE.read_regA, SINGLE_CYCLE.read_regB);
-        $monitor($time," Address RegA: %h\t\tAddress RegB:%h",SINGLE_CYCLE.REG_FILE.SrcA,SINGLE_CYCLE.REG_FILE.SrcB);
-        $monitor($time," ALU_SRCA: %h\t\tALU_SRCB:%h\n\t\t\t\tALU_code: %b\t\tALU_SLT:%b",SINGLE_CYCLE.ALU_ACTUAL.DataA,SINGLE_CYCLE.ALU_ACTUAL.DataB,SINGLE_CYCLE.ALU_ACTUAL.ALUCode, SINGLE_CYCLE.ALU_ACTUAL.SLT);
-        $monitor($time," DataMemAddr: %h\t\tMem_en_write: %b\t\t\t\tMem_en_read:%b\t\t\t\tx1:%h\t\t\t\tx7:%h",DATA_MEMORY.addr,DATA_MEMORY.mem_wen,DATA_MEMORY.mem_ren, SINGLE_CYCLE.REG_FILE.REGISTER_FILE[1],SINGLE_CYCLE.REG_FILE.REGISTER_FILE[7]);
         $monitor($time," DataMem: %h\t\tLoaded data:%h",DATA_MEMORY.RData, SINGLE_CYCLE.REG_FILE.REGISTER_FILE[1]);
-        
     end
 endmodule

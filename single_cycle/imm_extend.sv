@@ -35,7 +35,7 @@ module imm_extend (
             3'b010: extended_imm_reg = {{(20){imm_instr[31]}},imm_instr[7],imm_instr[30:25],imm_instr[11:8],1'b0};   //B-Type Instruction
             3'b011: extended_imm_reg = {{(12){imm_instr[31]}},imm_instr[19:12],imm_instr[20],imm_instr[30:21],1'b0}; //J-Type instruction
             3'b100: extended_imm_reg = {imm_instr[31:12],12'b0};                                                     //U-Type instruction
-            default: extended_imm_reg = 'z;
+            default: extended_imm_reg = 32'b0;
         endcase
     end
     assign extended_num = extended_imm_reg;

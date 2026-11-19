@@ -1,0 +1,42 @@
+=== Test 1: Write & Read across all 4 SRAM banks ===
+                   0 Writing tb_mem.dut.MEMORY_BANK[0].BANK.u_mem_bank addr0=00000000 din0=11011110101011011011111011101111 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[0].BANK.u_mem_bank addr0=11111111 din0=00010001000100010010001000100010 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[1].BANK.u_mem_bank addr0=00000000 din0=11001010111111101011101010111110 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[1].BANK.u_mem_bank addr0=11111111 din0=00110011001100110100010001000100 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[2].BANK.u_mem_bank addr0=00000000 din0=00010010001101000101011001111000 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[2].BANK.u_mem_bank addr0=11111111 din0=01010101010101010110011001100110 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[3].BANK.u_mem_bank addr0=00000000 din0=10100101101001010101101001011010 wmask0=1111
+                   0 Writing tb_mem.dut.MEMORY_BANK[3].BANK.u_mem_bank addr0=11111111 din0=01110111011101111000100010001000 wmask0=1111
+                   0 Reading tb_mem.dut.MEMORY_BANK[0].BANK.u_mem_bank addr1=00000000 dout1=11011110101011011011111011101111
+[PASS] addr=0x00000000 (bank 0, word 0) -> RData=0xdeadbeef
+                   0 Reading tb_mem.dut.MEMORY_BANK[0].BANK.u_mem_bank addr1=11111111 dout1=00010001000100010010001000100010
+[PASS] addr=0x000003fc (bank 0, word 255) -> RData=0x11112222
+                   0 Reading tb_mem.dut.MEMORY_BANK[1].BANK.u_mem_bank addr1=00000000 dout1=11001010111111101011101010111110
+[PASS] addr=0x00000400 (bank 1, word 0) -> RData=0xcafebabe
+                   0 Reading tb_mem.dut.MEMORY_BANK[1].BANK.u_mem_bank addr1=11111111 dout1=00110011001100110100010001000100
+[PASS] addr=0x000007fc (bank 1, word 255) -> RData=0x33334444
+                   0 Reading tb_mem.dut.MEMORY_BANK[2].BANK.u_mem_bank addr1=00000000 dout1=00010010001101000101011001111000
+[PASS] addr=0x00000800 (bank 2, word 0) -> RData=0x12345678
+                   0 Reading tb_mem.dut.MEMORY_BANK[2].BANK.u_mem_bank addr1=11111111 dout1=01010101010101010110011001100110
+[PASS] addr=0x00000bfc (bank 2, word 255) -> RData=0x55556666
+                   0 Reading tb_mem.dut.MEMORY_BANK[3].BANK.u_mem_bank addr1=00000000 dout1=10100101101001010101101001011010
+[PASS] addr=0x00000c00 (bank 3, word 0) -> RData=0xa5a55a5a
+                   0 Reading tb_mem.dut.MEMORY_BANK[3].BANK.u_mem_bank addr1=11111111 dout1=01110111011101111000100010001000
+[PASS] addr=0x00000ffc (bank 3, word 255) -> RData=0x77778888
+=== Test 2: Overwrite & Bank Isolation ===
+                   0 Writing tb_mem.dut.MEMORY_BANK[1].BANK.u_mem_bank addr0=00000000 din0=11110000000011011111101011001110 wmask0=1111
+                   0 Reading tb_mem.dut.MEMORY_BANK[1].BANK.u_mem_bank addr1=00000000 dout1=11110000000011011111101011001110
+[PASS] addr=0x00000400 (bank 1, word 0) -> RData=0xf00dface
+                   0 Reading tb_mem.dut.MEMORY_BANK[0].BANK.u_mem_bank addr1=00000000 dout1=11011110101011011011111011101111
+[PASS] addr=0x00000000 (bank 0, word 0) -> RData=0xdeadbeef
+                   0 Reading tb_mem.dut.MEMORY_BANK[2].BANK.u_mem_bank addr1=00000000 dout1=00010010001101000101011001111000
+[PASS] addr=0x00000800 (bank 2, word 0) -> RData=0x12345678
+=== Test 3: Back-to-Back Pipelined Reads across Banks ===
+                   0 Reading tb_mem.dut.MEMORY_BANK[0].BANK.u_mem_bank addr1=00000000 dout1=11011110101011011011111011101111
+[PASS] Back-to-back read 1 (Bank 0) -> RData=0xdeadbeef
+                   0 Reading tb_mem.dut.MEMORY_BANK[3].BANK.u_mem_bank addr1=00000000 dout1=10100101101001010101101001011010
+[PASS] Back-to-back read 2 (Bank 3) -> RData=0xa5a55a5a
+========================================
+tb_mem Summary: 13 PASSED, 0 FAILED
+========================================
+testbench/tb_mem.sv:144: $finish called at 444500 (1ps)

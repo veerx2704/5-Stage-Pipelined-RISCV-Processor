@@ -24,6 +24,5 @@ module PC_next #(parameter WIDTH = 32) (
     input wire [WIDTH - 1:0] current_PC,
     output wire [WIDTH - 1:0] next_PC
     );
-    wire overflow;
-    adder PC_NEXT_ADDRESS(.SrcA(current_PC), .SrcB(32'd4), .Cin(1'b0), .Sum(next_PC), .Cout(overflow));
+    assign next_PC = {current_PC[WIDTH-1:2] + {{(WIDTH-3){1'b0}}, 1'b1}, current_PC[1:0]};
 endmodule

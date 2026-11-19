@@ -62,8 +62,6 @@ module decode_stage(
     wire ALUSrc;
     
     //CONTROL SIGNAL OUTPUTS FOR NEXT STAGE
-    reg u_type_reg;
-    reg [1:0] imm_src_reg;
     reg [3:0] ALUCode_reg;
     reg [1:0] store_control_reg;
     reg [2:0] load_control_reg;
@@ -79,7 +77,6 @@ module decode_stage(
     //Data path registers for sending to EX stage
     reg [31:0] rs1_reg;
     reg [31:0] rs2_reg;
-    reg [31:0] inst_reg;
     reg [31:0] imm_value_reg;
     reg [4:0] rs1_addr_reg;
     reg [4:0] rs2_addr_reg;
@@ -191,7 +188,6 @@ module decode_stage(
         if (!rst) begin
             rs1_reg <= '0;
             rs2_reg <= '0;
-            inst_reg <= '0;
             imm_value_reg <= '0;
             rs1_addr_reg <= '0;
             rs2_addr_reg <= '0;
@@ -199,7 +195,6 @@ module decode_stage(
         else begin
             rs1_reg <= rs1_data;
             rs2_reg <= rs2_data;
-            inst_reg <= inst_IFID;
             imm_value_reg <= imm_value;
             rs1_addr_reg <= rs1_addr;
             rs2_addr_reg <= rs2_addr;
@@ -209,7 +204,6 @@ module decode_stage(
     //Datapath output signals
     assign rs1_IDEX = rs1_reg;
     assign rs2_IDEX = rs2_reg;
-    assign inst_IDEX = inst_reg;
     assign imm_value_IDEX = imm_value_reg;
     assign rs1_addr_IDEX = rs1_addr_reg;
     assign rs2_addr_IDEX = rs2_addr_reg;

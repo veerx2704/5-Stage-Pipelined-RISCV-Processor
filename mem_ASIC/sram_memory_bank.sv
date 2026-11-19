@@ -35,6 +35,7 @@ module sram_memory_bank (
 
 //SRAM MACRO INTERFACE
 wire [3:0] wmask = 4'b1111;
+wire wen = cs & we;
 wire ren = cs & re;
 sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_bank(
 	`ifdef USE_POWER_PINS
@@ -42,15 +43,15 @@ sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_bank(
 		.vssd1(vssd1),
 	`endif
 	
-	.clk0(~clk),
-	.csb0(~cs),
+	.clk0(clk),
+	.csb0(~wen),
 	.web0(~we),
 	.wmask0(wmask),
 	.addr0(Waddr),
 	.din0(WData),
 	.dout0(RData_0),
 	
-	.clk1(~clk),
+	.clk1(clk),
 	.csb1(~ren),
 	.addr1(Raddr),
 	.dout1(RData_1)

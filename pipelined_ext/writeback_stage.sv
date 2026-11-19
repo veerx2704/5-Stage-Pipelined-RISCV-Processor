@@ -1,7 +1,4 @@
 module writeback_stage (
-	input wire clk,
-	input wire rst,
-
 	//MEM stage inputs
 	input wire [31:0] ALU_forwarded_MEMWB,
 	input wire [31:0] loaded_data_MEMWB,

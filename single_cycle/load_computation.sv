@@ -31,12 +31,10 @@ module load_computation #(parameter WIDTH = 32)(
     always_comb begin
         computed_out = DataMem;                                               
         case(control)
-        3'b010: computed_out = DataMem;                                                        //lw
         3'b001: computed_out = {{(WIDTH/2){DataMem[(WIDTH/2) - 1]}},DataMem[(WIDTH/2)-1:0]};   //lh
         3'b101: computed_out = {'0, DataMem[(WIDTH/2) - 1:0]};                                 //lhu
         3'b100: computed_out = {'0, DataMem[7:0]};                                             //lbu
         3'b000: computed_out = {{(WIDTH-8){DataMem[7]}},DataMem[7:0]};                         //lb
-        default: computed_out = DataMem;
         endcase
     end
     
