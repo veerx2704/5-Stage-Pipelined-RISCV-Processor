@@ -29,6 +29,7 @@ module sram_memory_bank (
 	input wire cs,
 	input wire we,
 	input wire re,
+	input wire [3:0] wmask,
 	input wire [31:0] WData,
 	input wire [7:0] Waddr,
 	input wire [7:0] Raddr,
@@ -38,7 +39,6 @@ module sram_memory_bank (
 
 
 //SRAM MACRO INTERFACE
-wire [3:0] wmask = 4'b1111;
 wire wen = cs & we;
 wire ren = cs & re;
 sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_bank(

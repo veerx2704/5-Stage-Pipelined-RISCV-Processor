@@ -16,9 +16,9 @@ module control_unit(
     output wire u_type,
     output wire ResultSrc,
     output wire PCSrc,
+    output wire branch,
     output wire jump
 );
-    wire branch;
     wire PC_src_branch;
     main_decoder MAIN_DECODER(  .opcode,
                                 .funct3,

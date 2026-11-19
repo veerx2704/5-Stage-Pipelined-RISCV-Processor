@@ -3,6 +3,7 @@ module ALU #(parameter WIDTH = 32) (
     input wire [WIDTH-1:0] DataB,
     input wire [3:0] ALUCode,
     output wire [WIDTH-1:0] ALU_out,
+    output wire [WIDTH-1:0] sum_out,
     output wire zero,
     output wire LT,
     output wire LTU
@@ -58,6 +59,7 @@ assign overflow = (DataA[WIDTH-1] ^ DataB[WIDTH-1]) & (DataA[WIDTH-1] ^ sum[WIDT
 assign SLT = sum[WIDTH-1] ^ overflow;
 assign SLTU = ~cout;
 assign ALU_out = computed_out;
+assign sum_out = sum;
 assign zero = (DataA == DataB);                               // Parallel equality check for BEQ/BNE
 assign LT = SLT;                                              // for BLT
 assign LTU = SLTU;                                            // for BLTU

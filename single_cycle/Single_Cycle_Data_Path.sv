@@ -97,6 +97,7 @@ module Single_Cycle_Data_Path #(parameter WIDTH = 32)(
                                      .DataB(ALUDataB),
                                      .ALUCode(ALUCode),
                                      .ALU_out(ALU_out),
+                                     .sum_out(),
                                      .zero(zero),
                                      .LT(LT),
                                      .LTU(LTU));

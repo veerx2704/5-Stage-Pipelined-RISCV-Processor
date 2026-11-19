@@ -4,6 +4,7 @@ module data_mem #(WIDTH = 32)(
     input wire clk,
     input wire mem_wen,
     input wire mem_ren,
+    input wire [3:0] wmask,
     output wire [WIDTH-1:0] RData
 );
 
@@ -25,6 +26,7 @@ genvar i;
 					.cs(cs_en[i]), 
 					.we(mem_wen),
 					.re(mem_ren),
+					.wmask(wmask),
 					.WData(WData), 
 					.Waddr(addr[9:2]), 
 					.Raddr(addr[9:2]), 
