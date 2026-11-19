@@ -7,3 +7,4 @@ sta_report.txt
 .antigravity/*
 synth_logs/abc.constr
 synth_logs/branch_gshare_netlist.v
+synth_logs/*.vvp
