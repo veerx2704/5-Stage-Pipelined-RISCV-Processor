@@ -74,11 +74,11 @@ Repository/
 The design targets to achieve 100MHz operational frequency. 
 
 The repository introduces the following new features - 
-1. 5-stage pipeline                                                         **(WIP)**
+1. 5-stage pipeline
 2. Dynamic Branch Prediction                                                
 3. Hazard Detection - To flush out pipeline when stalling is inevitable
 4. Forward Unit - To control data forwarding
-5. Exception Handling - To handle invalid instructions                      **(WIP)**
+5. Exception Handling - To handle invalid instructions
 6. Development over 2 methods - Vivado (for FPGA implementation) and Yosys/OpenROAD/OpenSTA (for ASIC implmentation with SkyWater 130nm PDK).
 
 This repository will have nearly the same design in both the approaches, with the difference being at memory access. FPGA based implementation will have BRAM based memory instantiation (2-D array in Verilog), while the ASIC based implementation will have SRAM macro (from PDK library).
