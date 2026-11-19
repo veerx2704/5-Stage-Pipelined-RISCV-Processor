@@ -3,3 +3,5 @@ yosys_flow.sh
 synth.ys
 riscv_sta.tcl
 sta_report.txt
+.antigravity
+.antigravity/
