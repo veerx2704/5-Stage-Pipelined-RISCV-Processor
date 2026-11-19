@@ -17,10 +17,10 @@ reg [WIDTH-1:0] REGISTER_FILE[0:31];
 
 
 always_ff @(posedge clk) begin
-    if(Wen) REGISTER_FILE[DestC] <= WData;
+    if(Wen && (DestC != 5'b0)) REGISTER_FILE[DestC] <= WData;
 end
 
-assign RDataA = REGISTER_FILE[SrcA];
-assign RDataB = REGISTER_FILE[SrcB];
+assign RDataA = (SrcA == 5'b0) ? '0 : REGISTER_FILE[SrcA];
+assign RDataB = (SrcB == 5'b0) ? '0 : REGISTER_FILE[SrcB];
 
 endmodule

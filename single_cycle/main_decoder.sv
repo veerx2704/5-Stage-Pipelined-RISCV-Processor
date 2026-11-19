@@ -45,9 +45,9 @@ module main_decoder(
             7'd35: mMBRegJUISLRes =  { 1'b0,     1'b1,      1'b0,  1'b0,     1'b0,   1'b0,  2'b01,  funct3[1:0],   3'b010,      1'bx};           //S-Type
             7'd51: mMBRegJUISLRes =  { 1'b0,     1'b0,      1'b0,  1'b1,     1'b0,   1'b0,  2'bxx,  2'b10,         3'b010,      1'b0};           //R-Type
             7'd55: mMBRegJUISLRes =  { 1'b0,     1'b0,      1'b0,  1'b1,     1'b0,   1'b1,  2'b00,  2'b10,         3'b010,      1'b0};           //U-Type
-            7'd103:mMBRegJUISLRes =  { 1'b0,     1'b0,      1'b1,  1'b0,     1'b0,   1'b0,  2'b10,  2'b10,         3'b010,      1'bx};           //B-Type
+            7'd99: mMBRegJUISLRes =  { 1'b0,     1'b0,      1'b1,  1'b0,     1'b0,   1'b0,  2'b10,  2'b10,         3'b010,      1'b0};           //B-Type
             7'd111:mMBRegJUISLRes =  { 1'b0,     1'b0,      1'b0,  1'b1,     1'b1,   1'b0,  2'b11,  2'b10,         3'b010,      1'b0};           //J-Type
-            default: mMBRegJUISLRes = 14'bx;
+            default: mMBRegJUISLRes = 14'b0;
         endcase
     end
     // resultsrc = 1 : Data comes from memory, resultsrc = 0: data forwarded from ALU

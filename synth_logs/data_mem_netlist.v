@@ -398,35 +398,35 @@ module sram_memory_bank(clk, cs, we, re, WData, Waddr, Raddr, RData_0, RData_1);
   wire [31:0] RData_0;
   output [31:0] RData_1;
   wire [31:0] RData_1;
-  wire \$abc$679$not$mem_ASIC/sram_memory_bank.sv:47$3_Y ;
-  wire \$abc$679$not$mem_ASIC/sram_memory_bank.sv:48$4_Y ;
-  wire \$abc$679$not$mem_ASIC/sram_memory_bank.sv:55$5_Y ;
+  wire \$abc$679$not$mem_ASIC/sram_memory_bank.sv:51$3_Y ;
+  wire \$abc$679$not$mem_ASIC/sram_memory_bank.sv:52$4_Y ;
+  wire \$abc$679$not$mem_ASIC/sram_memory_bank.sv:59$5_Y ;
   wire [3:0] wmask;
   sky130_fd_sc_hd__clkinv_1 \$abc$679$auto$blifparse.cc:397:parse_blif$680  (
     .A(we),
-    .Y(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:48$4_Y )
+    .Y(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:52$4_Y )
   );
   sky130_fd_sc_hd__nand2_1 \$abc$679$auto$blifparse.cc:397:parse_blif$681  (
     .A(cs),
     .B(re),
-    .Y(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:55$5_Y )
+    .Y(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:59$5_Y )
   );
   sky130_fd_sc_hd__nand2_1 \$abc$679$auto$blifparse.cc:397:parse_blif$682  (
     .A(we),
     .B(cs),
-    .Y(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:47$3_Y )
+    .Y(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:51$3_Y )
   );
   sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_bank (
     .addr0(Waddr),
     .addr1(Raddr),
     .clk0(clk),
     .clk1(clk),
-    .csb0(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:47$3_Y ),
-    .csb1(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:55$5_Y ),
+    .csb0(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:51$3_Y ),
+    .csb1(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:59$5_Y ),
     .din0(WData),
     .dout0(RData_0),
     .dout1(RData_1),
-    .web0(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:48$4_Y ),
+    .web0(\$abc$679$not$mem_ASIC/sram_memory_bank.sv:52$4_Y ),
     .wmask0(4'hf)
   );
   assign wmask = 4'hf;

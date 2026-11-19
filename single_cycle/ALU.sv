@@ -50,7 +50,7 @@ always_comb begin
         4'b0110: computed_out = {{(WIDTH-1){1'b0}},SLTU};             //sltu
         4'b0101, 4'b1101, 4'b1100: computed_out = shift_res;          //sll, srl, sra
         4'b1000: computed_out = DataB;                                //lui (already shifted in imm_extend)
-        default: computed_out = 'x;
+        default: computed_out = '0;
     endcase
 end
 assign overflow = (DataA[WIDTH-1] ^ DataB[WIDTH-1]) & (DataA[WIDTH-1] ^ sum[WIDTH-1]); // Subtraction overflow for SLT

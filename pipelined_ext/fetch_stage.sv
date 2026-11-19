@@ -30,9 +30,6 @@ always_ff @(posedge clk) begin
         if (PCWrite) begin
             PC_IFID_reg <= PC_current;
         end
-        else begin
-            PC_IFID_reg <= '0;
-        end
     end
 end
 
@@ -46,19 +43,13 @@ always_ff @(posedge clk) begin
         inst_reg <= '0;
     end
     else begin
-        if(PCWrite) begin
+        if (IF_ID_write) begin
             PC_ID_reg <= PC_IFID_reg;
+            inst_reg  <= inst_intermediate;
         end
-        else begin
-            PC_ID_reg <= '0;
-        end
-        if (IF_ID_write)
-            inst_reg <= inst_intermediate;
-        else
-            inst_reg <= '0;
     end
 end
-assign PC_IFID = PC_IFID_reg;
+assign PC_IFID = PC_ID_reg;
 
 
 inst_mem INSTRUCTION_MEMORY (.PC(PC_IFID_reg[31:2]), .rst(rst), .decoded_I(inst_intermediate));     //asynchronous read

@@ -1,0 +1,7 @@
+[PASS] No forwarding when reg_write=0 (fwdA=00 fwdB=00)
+[PASS] EX/MEM -> A (10), MEM/WB -> B (01) (fwdA=10 fwdB=01)
+[PASS] EX/MEM priority over MEM/WB (fwdA=10 fwdB=10)
+[PASS] 5-bit compare rejects LSB-only match (fwdA=00 fwdB=00)
+[PASS] x0 never forwarded (fwdA=00 fwdB=00)
+tb_forward_unit Summary: 5 PASSED, 0 FAILED
+testbench/tb_forward_unit.sv:53: $finish called at 5000 (1ps)

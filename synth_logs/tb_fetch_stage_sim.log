@@ -1,0 +1,10 @@
+ERROR: single_cycle/inst_mem.sv:10: $readmemh: Unable to open C:\VerilogHDL\prep_practice\RISCV\instructions.txt for reading.
+[PASS] Reset clears PC_IFID and inst_IFID
+[PASS] Cycle 1: PC_IFID=0x0, inst_IFID=inst[0]
+[PASS] Cycle 2: PC_IFID=0x4, inst_IFID=inst[1]
+[PASS] Stall cycle 1 holds PC_IFID=0x4 & inst[1]
+[PASS] Stall cycle 2 holds PC_IFID=0x4 & inst[1]
+[PASS] Resume after stall: PC_IFID=0x8, inst[2]
+[PASS] Branch redirect: PC_IFID=0x20, inst[8]
+tb_fetch_stage Summary: 7 PASSED, 0 FAILED
+testbench/tb_fetch_stage.sv:98: $finish called at 86000 (1ps)

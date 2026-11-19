@@ -697,6 +697,6 @@ Dumping module `\sram_memory_bank'.
    Chip area for top module '\data_mem': 828.294400
      of which used for sequential elements: 40.038400 (4.83%)
 
-End of script. Logfile hash: 778e7973ea, time: 0.72s, user: 0.23s, system: 0.08s, MEM: 49.38 MB peak
+End of script. Logfile hash: 778e7973ea, time: 0.43s, user: 0.18s, system: 0.08s, MEM: 49.88 MB peak
 Yosys 0.68 (git sha1 38e001a6f, Release, GNU /usr/bin/c++ 13.3.0)
-Time spent: 53% 1x abc (0 sec), 20% 1x stat (0 sec), ...
+Time spent: 49% 1x abc (0 sec), 20% 1x dfflibmap (0 sec), ...

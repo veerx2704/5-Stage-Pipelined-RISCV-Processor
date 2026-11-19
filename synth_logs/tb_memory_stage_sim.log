@@ -1,0 +1,10 @@
+[PASS] ALU_forwarded_MEMWB and control signals registered
+                   0 Writing tb_memory_stage.dut.DATA_MEMORY.MEMORY_BANK[1].BANK.u_mem_bank addr0=00000000 din0=11001010111111101000000010010000 wmask0=1111
+                   0 Reading tb_memory_stage.dut.DATA_MEMORY.MEMORY_BANK[1].BANK.u_mem_bank addr1=00000000 dout1=11001010111111101000000010010000
+[PASS] LW reads 0xCAFE_8090 through SRAM into loaded_data_MEMWB
+                   0 Reading tb_memory_stage.dut.DATA_MEMORY.MEMORY_BANK[1].BANK.u_mem_bank addr1=00000000 dout1=11001010111111101000000010010000
+[PASS] LHU zero-extends to 0x0000_8090 (fixed concatenation)
+                   0 Reading tb_memory_stage.dut.DATA_MEMORY.MEMORY_BANK[1].BANK.u_mem_bank addr1=00000000 dout1=11001010111111101000000010010000
+[PASS] LBU zero-extends to 0x0000_0090 (fixed concatenation)
+tb_memory_stage Summary: 4 PASSED, 0 FAILED
+testbench/tb_memory_stage.sv:119: $finish called at 96000 (1ps)

@@ -36,8 +36,10 @@ module branch_decoder(
             3'b000: PC_src_reg = zero;      //BEQ
             3'b001: PC_src_reg = ~zero;     //BNE
             3'b100: PC_src_reg = LT;        //BLT
+            3'b101: PC_src_reg = ~LT;       //BGE
             3'b110: PC_src_reg = LTU;       //BLTU
-            default: PC_src_reg = 1'bx;
+            3'b111: PC_src_reg = ~LTU;      //BGEU
+            default: PC_src_reg = 1'b0;
         endcase
     end
     

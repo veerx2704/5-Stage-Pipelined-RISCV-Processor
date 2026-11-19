@@ -1,0 +1,7 @@
+[PASS] Reset state is W_NOT_TAKEN (pred=0)
+[PASS] GHR shifted left by 1 & PHT updated to W_NOT_TAKEN
+[PASS] FSM W_NOT_TAKEN -> W_TAKEN (pred=1) & GHR=0x003
+[PASS] FSM saturates at S_TAKEN (11) & GHR=0x00f
+[PASS] FSM S_TAKEN -> W_TAKEN on not-taken & GHR=0x01e
+tb_branch_gshare Summary: 5 PASSED, 0 FAILED
+testbench/tb_branch_gshare.sv:128: $finish called at 106000 (1ps)

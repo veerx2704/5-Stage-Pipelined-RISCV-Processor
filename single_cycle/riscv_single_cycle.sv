@@ -46,6 +46,7 @@ module riscv_single_cycle #(parameter WIDTH = 32)(
     wire ResultSrc;
     wire reg_write;
     wire mem_write;
+    wire mem_read;
     wire u_type;
     wire ALUSrc;
     wire [3:0] ALUCode;

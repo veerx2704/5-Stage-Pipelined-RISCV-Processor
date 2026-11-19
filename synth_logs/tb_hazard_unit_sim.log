@@ -1,0 +1,9 @@
+[PASS] Load-use stall on R-Type (rs2 match) (stall=1)
+[PASS] Load-use stall on Load (L_Type rs1 match) (stall=1)
+[PASS] Load-use stall on JALR (rs1 match) (stall=1)
+[PASS] Load-use stall on B-Type (opcode 7'b1100011) (stall=1)
+[PASS] No stall on independent R-Type (stall=0)
+[PASS] No false stall when rd_IDEX == x0 (stall=0)
+[PASS] No stall when mem_read_IDEX == 0 (stall=0)
+tb_hazard_unit Summary: 7 PASSED, 0 FAILED
+testbench/tb_hazard_unit.sv:65: $finish called at 7000 (1ps)

@@ -21,6 +21,10 @@
 
 
 module sram_memory_bank (
+`ifdef USE_POWER_PINS
+	inout wire vccd1,
+	inout wire vssd1,
+`endif
 	input wire clk,
 	input wire cs,
 	input wire we,

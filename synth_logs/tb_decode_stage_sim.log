@@ -1,0 +1,8 @@
+ERROR: single_cycle/reg_file.sv:15: $readmemh: Unable to open C:\VerilogHDL\prep_practice\RISCV\initial_reg.txt for reading.
+[PASS] inst_hazard mirrors inst_IFID
+[PASS] SUB decodes ALUCode=0001 (funct7_b5 wired), ALUSrc=0, reg_write=1
+[PASS] Full 32-bit rs1/rs2 data & 5-bit rs1/rs2/rd addresses propagated
+[PASS] hazard_stall zeroes reg_write_IDEX, mem_read_IDEX, ALUSrc_IDEX
+[PASS] x0 read is hardwired 0 & ADDI imm=4
+tb_decode_stage Summary: 5 PASSED, 0 FAILED
+testbench/tb_decode_stage.sv:143: $finish called at 76000 (1ps)

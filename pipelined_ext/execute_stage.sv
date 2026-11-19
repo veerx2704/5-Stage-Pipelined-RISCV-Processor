@@ -73,21 +73,21 @@ wire LT;
 wire LTU;
 
 assign ALU_inA = forwardA[1] ? 
-                    forwardA[0] ?  32'bx : forward_data_WB
-                 :  forwardA[0] ?  forward_data_MEM : rs1_IDEX;
+                    (forwardA[0] ? rs1_IDEX : forward_data_MEM)
+                 :  (forwardA[0] ? forward_data_WB : rs1_IDEX);
                  
 assign ALU_data_sourceB = forwardB[1] ?
-                             forwardB[0] ? 32'bx : forward_data_WB
-                          :  forwardB[0] ? forward_data_MEM : rs2_IDEX;
+                             (forwardB[0] ? rs2_IDEX : forward_data_MEM)
+                          :  (forwardB[0] ? forward_data_WB : rs2_IDEX);
 
 assign ALU_inB = ALUSrc_IDEX ? imm_value_IDEX :
-                 forwardB[1] ? (forwardB[0] ? 32'bx : forward_data_WB) :
-                               (forwardB[0] ? forward_data_MEM : rs2_IDEX);
+                 forwardB[1] ? (forwardB[0] ? rs2_IDEX : forward_data_MEM) :
+                               (forwardB[0] ? forward_data_WB : rs2_IDEX);
 
 ALU ALU_ACTUAL (    .DataA(ALU_inA),
                     .DataB(ALU_inB),
                     .ALUCode(ALUCode_IDEX),
-                    .ALUOut(ALUOut),
+                    .ALU_out(ALUOut),
                     .zero(zero),
                     .LT(LT),
                     .LTU(LTU)); 
@@ -117,7 +117,7 @@ always_ff @(posedge clk) begin
     end
     else begin
         ALUOut_reg <= ALUOut;
-        sourceB_reg <= ALU_inB;
+        sourceB_reg <= ALU_data_sourceB;
         rd_EXMEM_reg <= rd_IDEX;
         mem_read_reg <= mem_read_IDEX;
         mem_write_reg <= mem_write_IDEX;

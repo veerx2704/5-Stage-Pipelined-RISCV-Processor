@@ -79,7 +79,7 @@ module Single_Cycle_Data_Path #(parameter WIDTH = 32)(
                                  .extended_num(imm_value));
     wire [31:0] data_to_register;
     
-    assign data_to_register = jump ? PC_addr : loaded_data;                 //write next PC address to register if jump
+    assign data_to_register = jump ? next_addr : loaded_data;                 //write next PC address (PC+4) to register if jump
     
     reg_file #(.WIDTH(WIDTH)) REG_FILE( .clk(clk),
                                              .SrcA(instruction[19:15]),

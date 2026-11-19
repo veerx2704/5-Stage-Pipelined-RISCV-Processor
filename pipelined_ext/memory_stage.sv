@@ -52,6 +52,7 @@ load_computation DATA_POSTPROCESS (	.DataMem(data_from_mem),
 
 
 reg [31:0] loaded_data_reg;
+reg [31:0] ALU_forwarded_reg;
 reg ResultSrc_reg;
 reg [4:0] rd_reg;
 reg reg_write_reg;
@@ -59,18 +60,22 @@ reg reg_write_reg;
 always @(posedge clk) begin
 	if (!rst) begin
 		loaded_data_reg <= '0;
+		ALU_forwarded_reg <= '0;
 		ResultSrc_reg <= '0;
 		rd_reg <= '0;
 		reg_write_reg <= '0;
 	end
 	else begin
 		loaded_data_reg <= loaded_data;
+		ALU_forwarded_reg <= ALUOut_EXMEM;
 		ResultSrc_reg <= ResultSrc_EXMEM;
 		rd_reg <= rd_EXMEM;
 		reg_write_reg <= reg_write_EXMEM;
 	end
 end
 
+assign loaded_data_MEMWB = loaded_data_reg;
+assign ALU_forwarded_MEMWB = ALU_forwarded_reg;
 assign rd_MEMWB = rd_reg;
 assign ResultSrc_MEMWB = ResultSrc_reg;
 assign reg_write_MEMWB = reg_write_reg;

@@ -28,13 +28,15 @@ module alu_decoder (
                         endcase
                    end
              7'd55: ALUCode_reg = 4'b1000;                                              //U-type (LUI)
-             7'd103: begin
+             7'd99: begin
                         ALUSrc_reg = 1'b0;
                         case(funct3) 
                             3'b000: ALUCode_reg = 4'b0001;                              //BEQ
                             3'b001: ALUCode_reg = 4'b0001;                              //BNE
                             3'b100: ALUCode_reg = 4'b0100;                              //BLT
+                            3'b101: ALUCode_reg = 4'b0100;                              //BGE
                             3'b110: ALUCode_reg = 4'b0110;                              //BLTU
+                            3'b111: ALUCode_reg = 4'b0110;                              //BGEU
                             default: ALUCode_reg = 4'b0000;                          
                         endcase
                      end
